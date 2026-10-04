@@ -1,0 +1,20 @@
+# Eclipse workspace / local metadata
+.metadata/
+Servers/
+
+# Java compiled files
+*.class
+
+# Build output
+build/
+target/
+
+# Eclipse-generated deployment/output folders
+bin/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
