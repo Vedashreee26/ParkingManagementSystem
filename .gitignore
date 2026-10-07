@@ -21,3 +21,5 @@ Thumbs.db
 
 #jars
 ojdbc14
+
+*.jar
