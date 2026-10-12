@@ -36,7 +36,7 @@ public class ExitServlet extends HttpServlet {
                 );
 
                 request.getRequestDispatcher(
-                        "exit.html"
+                        "Exit.html"
                 ).forward(request, response);
 
                 return;

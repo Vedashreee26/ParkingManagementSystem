@@ -28,7 +28,7 @@ Payment Status:
 PAID
 </p>
 
-<a href="index.html">
+<a href="Index.html">
 Back to Home
 </a>
 

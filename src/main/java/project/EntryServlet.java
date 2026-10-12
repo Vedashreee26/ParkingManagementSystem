@@ -32,7 +32,7 @@ public class EntryServlet extends HttpServlet {
                     "Vehicle is already parked!"
                 );
 
-                request.getRequestDispatcher("entry.html")
+                request.getRequestDispatcher("Entry.html")
                        .forward(request, response);
 
                 return;
@@ -48,7 +48,7 @@ public class EntryServlet extends HttpServlet {
                     "Parking is full!"
                 );
 
-                request.getRequestDispatcher("entry.html")
+                request.getRequestDispatcher("Entry.html")
                        .forward(request, response);
 
                 return;

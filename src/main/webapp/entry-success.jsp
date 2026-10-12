@@ -23,7 +23,7 @@ Record ID:
 ${recordId}
 </p>
 
-<a href="index.html">
+<a href="Index.html">
 Back to Home
 </a>
 
