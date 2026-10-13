@@ -79,6 +79,23 @@ public class ParkingDAO {
             return rs.getInt(1);
         }
     }
+    
+    public boolean addParkingSpace(String spaceNo) throws Exception {
+
+        String sql =
+            "INSERT INTO PARKING_SPACE (SPACE_NO, STATUS) VALUES (?, 'AVAILABLE')";
+
+        try (Connection con = DBConnection.getCon();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setString(1, spaceNo);
+
+            return ps.executeUpdate() > 0;
+        } catch (java.sql.SQLIntegrityConstraintViolationException e) {
+            // For example, a duplicate primary key or unique slot number.
+            return false;
+        }
+    }
 
     public ArrayList<ParkingSpaceBean> getAllSpaces() throws Exception {
 

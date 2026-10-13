@@ -1,43 +1,200 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Parking Management System</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-    <title>Parking Management System</title>
+        body {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
 
-    <link rel="stylesheet"
-          href="css/style.css">
+        .header {
+            text-align: center;
+            color: #ffffff;
+            margin-bottom: 40px;
+        }
 
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            color: #e0e6ed;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            max-width: 1100px;
+            width: 100%;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .card h2 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: #1e3c72;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 25px;
+            line-height: 1.4;
+        }
+
+        /* Form submit button */
+        .btn-submit {
+            width: 100%;
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            color: #ffffff;
+            transition: background 0.3s ease;
+        }
+
+        /* Distinct button colors for each feature */
+        .btn-spaces { background-color: #2980b9; }
+        .btn-spaces:hover { background-color: #1f618d; }
+
+        .btn-entry { background-color: #27ae60; }
+        .btn-entry:hover { background-color: #219150; }
+
+        .btn-exit { background-color: #e67e22; }
+        .btn-exit:hover { background-color: #d35400; }
+
+        .btn-dashboard { background-color: #8e44ad; }
+        .btn-dashboard:hover { background-color: #71368a; }
+
+        .btn-vehicles { background-color: #34495e; }
+        .btn-vehicles:hover { background-color: #2c3e50; }
+
+        footer {
+            margin-top: 40px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            text-align: center;
+        }
+    </style>
 </head>
-
 <body>
 
-<h1>
-Parking Management System
-</h1>
+    <div class="header">
+        <h1>🅿️ Smart Parking Management System</h1>
+        <p>Automated Slot Allocation, Real-time Tracking & Billing Portal</p>
+    </div>
 
-<a href="Entry.html">
-Park Vehicle
-</a>
+    <div class="grid-container">
 
-<br><br>
+        <!-- 1. Ayush's Feature: Parking Spaces (Action -> ParkingServlet) -->
+        <div class="card">
+            <div>
+                <div class="icon">🅿️</div>
+                <h2>Parking Spaces</h2>
+                <p>Live visual layout of all slots (Green/Red) and capacity management.</p>
+            </div>
+            <form action="ParkingServlet" method="get">
+                <button type="submit" class="btn-submit btn-spaces">Manage Slots</button>
+            </form>
+        </div>
 
-<a href="Exit.html">
-Exit Vehicle
-</a>
+        <!-- 2. Vehicle Entry (Action -> Entry.html or EntryServlet) -->
+        <div class="card">
+            <div>
+                <div class="icon">🚗</div>
+                <h2>Vehicle Entry</h2>
+                <p>Register incoming vehicle, validate capacity, and allocate parking slot.</p>
+            </div>
+            <form action="Entry.html" method="get">
+                <button type="submit" class="btn-submit btn-entry">New Entry</button>
+            </form>
+        </div>
 
-<br><br>
+        <!-- 3. Vehicle Exit (Action -> Exit.html or ExitServlet) -->
+        <div class="card">
+            <div>
+                <div class="icon">💳</div>
+                <h2>Vehicle Exit</h2>
+                <p>Lookup active parking record, calculate fee, and release slot.</p>
+            </div>
+            <form action="Exit.html" method="get">
+                <button type="submit" class="btn-submit btn-exit">Process Exit</button>
+            </form>
+        </div>
 
-<a href="Dashboard">
-Parking Dashboard
-</a>
+        <!-- 4. Dashboard (Action -> DashboardServlet) -->
+        <div class="card">
+            <div>
+                <div class="icon">📊</div>
+                <h2>Dashboard</h2>
+                <p>View total capacity, live occupancy statistics, and summary reports.</p>
+            </div>
+            <form action="DashboardServlet" method="get">
+                <button type="submit" class="btn-submit btn-dashboard">View Dashboard</button>
+            </form>
+        </div>
 
-<br><br>
+        <!-- 5. Vehicle Records (Action -> VehicleServlet) -->
+        <div class="card">
+            <div>
+                <div class="icon">📋</div>
+                <h2>Vehicles List</h2>
+                <p>View all registered vehicles and their current parking status.</p>
+            </div>
+            <form action="VehicleServlet" method="get">
+                <button type="submit" class="btn-submit btn-vehicles">View Vehicles</button>
+            </form>
+        </div>
 
-<a href="Vehicles">
-Vehicle Records
-</a>
+    </div>
+
+    <footer>
+        &copy; 2026 Parking Management System | Java Servlets & Oracle DB
+    </footer>
 
 </body>
-
 </html>
